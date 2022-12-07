@@ -1,0 +1,132 @@
+#navbar-wrapper {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+#navbar {
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Saira Semi Condensed', sans-serif;
+  height: 4em;
+  overflow: hidden;
+}
+
+#navbar.navbar-visible {
+  height: 100%;
+  overflow: auto;
+}
+
+.navbar {
+  display: flex;
+  height: 4em;
+  line-height: 4em;
+  flex-grow: 1;
+}
+.navbar-link,
+.logo {
+  padding: 0 1em;
+}
+
+span.gradient {
+  background: rgb(87, 190, 190);
+  background: -webkit-linear-gradient(45deg, rgb(36, 98, 156), rgb(87, 190, 190));
+  background: linear-gradient(45deg, rgb(36, 98, 156), rgb(87, 190, 190));
+  padding: 0 1em;
+  position: relative;
+  right: 1em;
+  margin-right: auto;
+}
+span.gradient:hover {
+  animation-name: logo-hover;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.17, 0.57, 0.31, 0.85);
+}
+
+h1.logo {
+  font-weight: 300;
+  font-size: 1.55em;
+  line-height: 0.75em;
+  color: #fff;
+}
+
+.icon-img {
+  padding-right: 15px;
+}
+
+.navbar-link {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.btn-navbar {
+  color: #f857a8;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+@media (min-width: 800px) {
+  #navbar-wrapper {
+    overflow: hidden;
+  }
+  #navbar {
+    overflow: hidden;
+    flex-direction: row;
+  }
+  .navbar-link {
+    border-top: none;
+  }
+  .right {
+    overflow: hidden;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: relative;
+    left: 1.5em;
+    height: auto;
+  }
+  .btn-navbar {
+    display: none;
+  }
+  .nava:link.active,
+  a:visited.active,
+  a:active.active {
+    background: #f857a8;
+    background: -webkit-linear-gradient(45deg, rgb(36, 98, 156), rgb(87, 190, 190));
+    background: linear-gradient(45deg, rgb(36, 98, 156), rgb(87, 190, 190));
+  }
+  .navbar-link-span {
+    transform: skew(20deg);
+    display: inline-block;
+  }
+  .navbar-link {
+    transform: skew(-20deg);
+    color: rgb(87, 190, 190);
+    text-decoration: none;
+  }
+  .navbar-link:last-child {
+    padding-right: 3em;
+  }
+  a:hover.navbar-link:not(.active) {
+    color: #444;
+    background: #ddd;
+  }
+}
+@keyframes logo-hover {
+  20% {
+    padding-right: 0em;
+  }
+  100% {
+    padding-right: 5em;
+  }
+}
