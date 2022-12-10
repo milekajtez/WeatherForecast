@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../css/Home.css';
 import { goToPage } from '../../Helpers/RoutingHelper';
 import { useNavigate } from 'react-router-dom';
+import API from '../../api';
 
 export default function Home() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    API.get().then((response) => {
+      console.log(response.data);
+    });
+  }, []);
 
   return (
     <div className="container">
