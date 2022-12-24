@@ -6,6 +6,8 @@ app = FastAPI()
 config = DefineConfiguration()
 config.configureCors(app)
 
+import_files = ImportFiles()
+
 
 @app.get("/")
 async def getMessage():
@@ -14,10 +16,9 @@ async def getMessage():
 
 @app.get("/importFiles/loadCSVNames")
 async def loadNamesOfAllCSVFiles():
-    import_files = ImportFiles()
     return import_files.loadNamesOfAllCSVFiles()
 
 
-@app.get("/importFiles")
+@app.post("/importDataFromCSV")
 async def getImportFiles():
-    return {"message": "Import data"}
+    return import_files.importDataFromCSVToDatabase
