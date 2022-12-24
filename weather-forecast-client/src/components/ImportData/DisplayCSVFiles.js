@@ -3,10 +3,11 @@ import '../../css/DisplayCSVFiles.css';
 import API from '../../api';
 
 export function DisplayCSVFiles() {
-  const [CSVNames, setCSVnames] = useState([]);
+  const [CSVNames, setCSVNames] = useState([]);
+
   useEffect(() => {
     API.get('/importFiles/loadCSVNames').then((response) => {
-      setCSVnames(response.data);
+      setCSVNames(response.data);
     });
   }, []);
 
