@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ImportData } from './components/ImportData/ImportData';
 import { Trening } from './components/Trening/Trening';
 import { Forecast } from './components/Forecast/Forecast';
-import { DisplayResults } from './components/DisplayResults/DisplayResults';
+import { DisplayImportedData } from './components/DisplayResults/DisplayImportedData';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path={'/importData'} element={<ImportData />} />
         <Route path={'/trening'} exact element={<Trening />} />
         <Route path={'/forecast'} exact element={<Forecast />} />
-        <Route path={'/displayResults'} exact element={<DisplayResults />} />
+        <Route path={'/displayImportedData'} exact element={<DisplayImportedData />} />
       </Routes>
     </div>
   );

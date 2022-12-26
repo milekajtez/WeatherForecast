@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from helpers.define_configuration import DefineConfiguration
-from services.importFiles import ImportFiles
+from services.import_files import ImportFiles
 
 app = FastAPI()
 config = DefineConfiguration()

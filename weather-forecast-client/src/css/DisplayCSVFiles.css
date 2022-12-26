@@ -5,8 +5,7 @@
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif')
-    50% 50% no-repeat transparent;
+  background: url('/src/images/loader.svg') 50% 50% no-repeat transparent;
 }
 
 @keyframes spin {

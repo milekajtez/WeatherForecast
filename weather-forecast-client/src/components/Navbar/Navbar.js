@@ -52,10 +52,10 @@ export function Navbar(props) {
               </span>
             </button>
             <button
-              onClick={() => goToPage('/displayResults', navigate, { replace: true })}
+              onClick={() => goToPage('/displayImportedData', navigate, { replace: true })}
               className="navbar-link">
               <span className="navbar-link-span">
-                <span className="u-navbar">Display results</span>
+                <span className="u-navbar">Display Imported data</span>
               </span>
             </button>
           </div>

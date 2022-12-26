@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navbar } from '../Navbar/Navbar';
 
-export function DisplayResults() {
+export function DisplayImportedData() {
   return (
     <>
-      <Navbar pageName="DISPLAY RESULTS" />
+      <Navbar pageName="DISPLAY IMPORTED DATA" />
     </>
   );
 }
