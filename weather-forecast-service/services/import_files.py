@@ -1,8 +1,12 @@
 import os
+from datetime import datetime
 
 import numpy as np
 import pandas
-from helpers.help_data import weather_columns, load_columns
+
+from helpers.help_data import weather_columns, load_columns, job_days_weight, finally_friday_weight, \
+    weekend_saturday_weight, weekend_sunday_weight, holidays
+
 pandas.set_option('display.max_rows', None)
 
 TRAINING_DATA = './Training Data'
@@ -29,6 +33,25 @@ class ImportFiles:
 
         return paths
 
+    @staticmethod
+    def makeWeightColumn(dates_columns):
+        weight_column = []
+        for date in dates_columns:
+            current_date = datetime.strptime(date.split(' ')[0], '%m/%d/%Y').date()
+            current_weekday = current_date.weekday()
+
+            weight = 1
+            holiday = [obj for obj in holidays if obj.get_date() == current_date]
+            if len(holiday) > 0:
+                weight += holiday[0].holiday_weight
+
+            weight += job_days_weight if current_weekday <= 3 else finally_friday_weight if current_weekday == 4 else \
+                weekend_saturday_weight if current_weekday == 5 else weekend_sunday_weight
+
+            weight_column.append(weight)
+
+        return weight_column
+
     @property
     def importDataFromCSVToDatabase(self):
         paths_load = self.loadAllPaths('load')
@@ -45,7 +68,6 @@ class ImportFiles:
             weather_current.append(df)
 
         weather_combined = pandas.concat(weather_current)
-        print(weather_combined)
 
         load_current = []
         for path in paths_load:
@@ -56,7 +78,10 @@ class ImportFiles:
             load_current.append(df[(df['Name'] == 'N.Y.C.') & (df['Time Stamp'].str.contains(':00:00'))])
 
         load_combined = pandas.concat(load_current)
-        print(load_combined)
+        load_combined['Weight'] = self.makeWeightColumn(load_combined['Time Stamp'])
+
+        load_combined.reset_index(inplace=True)
+
         # working with data
         # here will be adding data to mongodb database
         return 'Success'
