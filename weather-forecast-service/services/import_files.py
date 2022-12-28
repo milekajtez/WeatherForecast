@@ -4,6 +4,7 @@ from datetime import datetime
 import numpy as np
 import pandas
 
+from data_access.data_access_db import insert_weather_data, insert_load_data
 from helpers.help_data import weather_columns, load_columns, job_days_weight, finally_friday_weight, \
     weekend_saturday_weight, weekend_sunday_weight, holidays
 
@@ -80,8 +81,13 @@ class ImportFiles:
         load_combined = pandas.concat(load_current)
         load_combined['Weight'] = self.makeWeightColumn(load_combined['Time Stamp'])
 
-        load_combined.reset_index(inplace=True)
+        weather_combined.reset_index(inplace=True)
+        weather_dict = weather_combined.to_dict("records")
 
-        # working with data
-        # here will be adding data to mongodb database
+        load_combined.reset_index(inplace=True)
+        load_dict = load_combined.to_dict("records")
+
+        insert_weather_data({"index": "weather", "data": weather_dict})
+        insert_load_data({"index": "load", "data": load_dict})
+
         return 'Success'
