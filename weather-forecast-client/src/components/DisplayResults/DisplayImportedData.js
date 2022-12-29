@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar } from '../Navbar/Navbar';
 import API from '../../api';
 import '../../css/DisplayCSVFiles.css';
 import {
@@ -132,7 +131,6 @@ export function DisplayImportedData() {
           />
         </span>
       </div>
-      <Navbar pageName="DISPLAY IMPORTED DATA" />
     </>
   );
 }

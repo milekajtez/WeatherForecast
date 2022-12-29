@@ -7,21 +7,20 @@ export function DisplayCSVFiles() {
 
   useEffect(() => {
     API.get('/importFiles/loadCSVNames').then((response) => {
+      console.log(response);
       setCSVNames(response.data);
     });
   }, []);
 
   return (
-    <section>
-      <div className="tbl-header">
-        <table cellPadding="0" cellSpacing="0" border="0">
-          <thead>
-            <tr>
-              <th>NAMES OF ALL CSV FILES</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
+    <>
+      <table cellPadding="0" cellSpacing="0" border="0">
+        <thead>
+          <tr>
+            <th>All current csv files</th>
+          </tr>
+        </thead>
+      </table>
       <div className="tbl-content">
         <table cellPadding="0" cellSpacing="0" border="0">
           <tbody>
@@ -35,6 +34,6 @@ export function DisplayCSVFiles() {
           </tbody>
         </table>
       </div>
-    </section>
+    </>
   );
 }

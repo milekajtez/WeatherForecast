@@ -1,20 +1,19 @@
 from fastapi import FastAPI
-
-from helpers.define_configuration import DefineConfiguration
 from services.import_files import ImportFiles
 from services.load_data import LoadData
+from weather_api.cors_configuration import configureCors
+from weather_api.controllers import test_controller
+
+# Swagger UI: http://127.0.0.1:8000/docs
+# ReDoc: http://127.0.0.1:8000/redoc
 
 app = FastAPI()
-config = DefineConfiguration()
-config.configureCors(app)
+configureCors(app)
 
 import_files = ImportFiles()
 load_data = LoadData()
 
-
-@app.get("/")
-async def getMessage():
-    return 'test'
+app.include_router(test_controller.router, prefix='/test')
 
 
 @app.get("/importFiles/loadCSVNames")

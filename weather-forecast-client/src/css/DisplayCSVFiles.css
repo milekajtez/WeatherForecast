@@ -35,10 +35,6 @@ table {
   background: linear-gradient(to right, #25c481, #25b7c4);
 }
 
-.tbl-header {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
 .tbl-content {
   color: black;
   height: 300px;

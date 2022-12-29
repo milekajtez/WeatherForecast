@@ -10,7 +10,7 @@ export function WeatherResults(props) {
     <>
       <section style={{ marginTop: '100px' }}>
         <div style={{ color: 'white', margin: '5px', fontSize: '20px' }}>WEATHER DATA</div>
-        <div className="tbl-header">
+        <div>
           <table cellPadding="0" cellSpacing="0" border="0">
             <thead>
               <tr>

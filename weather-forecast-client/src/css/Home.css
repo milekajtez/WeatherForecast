@@ -1,12 +1,10 @@
 .container {
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   scroll-behavior: smooth;
   background: url('../../public/images/home.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: 'Helvetica Neue', sans-serif;
 }
 
 button {
