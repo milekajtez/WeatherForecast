@@ -1,4 +1,5 @@
 from models.Holiday import Holiday
+from models.MonthData import MonthData
 
 weather_columns = ['datetime', 'temp', 'feelslike', 'snow', 'windspeed', 'cloudcover', 'conditions']
 load_columns = ['Time Stamp', 'Name', 'Load']
@@ -90,3 +91,45 @@ holidays = [
     Holiday("2021-11-25", 0.8, job_days_weight),
     Holiday("2021-12-25", 0.75, finally_friday_weight)
 ]
+
+
+def monthIncrement(date, temperature, month_array, cnt_array, char):
+    if '{0}01{1}'.format(char, char) in date:
+        month_array[0] += float(temperature)
+        cnt_array[0] += 1
+    elif '{0}02{1}'.format(char, char) in date:
+        month_array[1] += float(temperature)
+        cnt_array[1] += 1
+    elif '{0}03{1}'.format(char, char) in date:
+        month_array[2] += float(temperature)
+        cnt_array[2] += 1
+    elif '{0}04{1}'.format(char, char) in date:
+        month_array[3] += float(temperature)
+        cnt_array[3] += 1
+    elif '{0}05{1}'.format(char, char) in date:
+        month_array[4] += float(temperature)
+        cnt_array[4] += 1
+    elif '{0}06{1}'.format(char, char) in date:
+        month_array[5] += float(temperature)
+        cnt_array[5] += 1
+    elif '{0}07{1}'.format(char, char) in date:
+        month_array[6] += float(temperature)
+        cnt_array[6] += 1
+    elif '{0}08{1}'.format(char, char) in date:
+        month_array[7] += float(temperature)
+        cnt_array[7] += 1
+    elif '{0}09{1}'.format(char, char) in date:
+        month_array[8] += float(temperature)
+        cnt_array[8] += 1
+    elif '{0}10{1}'.format(char, char) in date:
+        month_array[9] += float(temperature)
+        cnt_array[9] += 1
+    elif '{0}11{1}'.format(char, char) in date:
+        month_array[10] += float(temperature)
+        cnt_array[10] += 1
+    elif '{0}12{1}'.format(char, char) in date:
+        month_array[11] += float(temperature)
+        cnt_array[11] += 1
+
+    result = MonthData(month_array, cnt_array)
+    return result

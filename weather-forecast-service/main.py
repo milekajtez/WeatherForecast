@@ -1,5 +1,3 @@
-import json
-
 from fastapi import FastAPI
 
 from helpers.define_configuration import DefineConfiguration
@@ -33,3 +31,22 @@ async def getImportFiles():
 async def loadDataForDisplay(load_type: str = "load"):
     return load_data.loadDataForDisplay(load_type)
 
+
+@app.get("/averageTemperaturesPerYears")
+async def getTemperaturesAveragePerYear():
+    return load_data.getTemperaturesAveragePerYear()
+
+
+@app.get("/getNumberOfDaysWithSpecificConditionsPerYear")
+async def getTemperaturesAveragePerYear(year: str = "2018"):
+    return load_data.getNumberOfDaysWithSpecificConditionsPerYear(year)
+
+
+@app.get("/getMonthsTemperature")
+async def getMonthsTemperature():
+    return load_data.getMonthsTemperature()
+
+
+@app.get("/getMonthsLoads")
+async def getMonthsLoads():
+    return load_data.getMonthsLoads()
