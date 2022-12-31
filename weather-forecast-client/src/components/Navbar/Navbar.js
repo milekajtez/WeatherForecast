@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/Navbar.css';
+import '../../css/NavbarStyles.css';
 import { tabs } from '../../Helpers/TabHelper';
 import { Tab } from '../Home/Tab';
 import { Logo } from './Logo';

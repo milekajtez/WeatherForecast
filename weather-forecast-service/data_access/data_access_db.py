@@ -18,9 +18,3 @@ def insert_weather_data(data):
 def insert_load_data(data):
     load_collection.insert_one(data)
 
-
-def get_load(param):
-    if param['index'] == 'load':
-        return load_collection.find_one(param)
-    else:
-        return weather_collection.find_one(param)

@@ -4,7 +4,7 @@ import '../../css/ImportData.css';
 export function WeatherResults(props) {
   const { weatherData } = props;
 
-  console.log(weatherData);
+  // Display all values for weather
 
   return (
     <>

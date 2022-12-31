@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../../css/DisplayCSVFiles.css';
+import '../../css/DisplayCSVFilesStyles.css';
 import API from '../../api';
 
 export function DisplayCSVFiles() {
   const [CSVNames, setCSVNames] = useState([]);
 
   useEffect(() => {
-    API.get('/importFiles/loadCSVNames').then((response) => {
-      console.log(response);
+    API.get('importData/loadCSVNames').then((response) => {
       setCSVNames(response.data);
     });
   }, []);

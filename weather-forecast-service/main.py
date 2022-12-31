@@ -1,8 +1,7 @@
 from fastapi import FastAPI
-from services.import_files import ImportFiles
-from services.load_data import LoadData
 from weather_api.cors_configuration import configureCors
-from weather_api.controllers import test_controller
+from weather_api.controllers import test_controller, import_and_process_data_controller, \
+    display_weather_data_controller, display_load_data_controller
 
 # Swagger UI: http://127.0.0.1:8000/docs
 # ReDoc: http://127.0.0.1:8000/redoc
@@ -10,42 +9,7 @@ from weather_api.controllers import test_controller
 app = FastAPI()
 configureCors(app)
 
-import_files = ImportFiles()
-load_data = LoadData()
-
 app.include_router(test_controller.router, prefix='/test')
-
-
-@app.get("/importFiles/loadCSVNames")
-async def loadNamesOfAllCSVFiles():
-    return import_files.loadNamesOfAllCSVFiles()
-
-
-@app.post("/importDataFromCSV")
-async def getImportFiles():
-    return import_files.importDataFromCSVToDatabase
-
-
-@app.get("/loadDataForDisplay", status_code=200)
-async def loadDataForDisplay(load_type: str = "load"):
-    return load_data.loadDataForDisplay(load_type)
-
-
-@app.get("/averageTemperaturesPerYears")
-async def getTemperaturesAveragePerYear():
-    return load_data.getTemperaturesAveragePerYear()
-
-
-@app.get("/getNumberOfDaysWithSpecificConditionsPerYear")
-async def getTemperaturesAveragePerYear(year: str = "2018"):
-    return load_data.getNumberOfDaysWithSpecificConditionsPerYear(year)
-
-
-@app.get("/getMonthsTemperature")
-async def getMonthsTemperature():
-    return load_data.getMonthsTemperature()
-
-
-@app.get("/getMonthsLoads")
-async def getMonthsLoads():
-    return load_data.getMonthsLoads()
+app.include_router(import_and_process_data_controller.router, prefix='/importData')
+app.include_router(display_weather_data_controller.router, prefix='/displayWeatherData')
+app.include_router(display_load_data_controller.router, prefix='/displayLoadData')
