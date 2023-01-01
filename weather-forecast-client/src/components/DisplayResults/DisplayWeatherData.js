@@ -22,6 +22,8 @@ import {
   temperatureData,
   dataPerMonthsData
 } from '../../Helpers/ChartHelper';
+import { DisplayOtherWeatherData } from './DisplayOtherWeatherData';
+import '../../css/HomeStyles.css';
 
 ChartJS.register(
   CategoryScale,
@@ -74,6 +76,7 @@ export function DisplayWeatherData() {
       setMonthsTemp2021(response.data.y2021);
     });
   }, []);
+
   return (
     <>
       <ChartWrapper>
@@ -87,48 +90,10 @@ export function DisplayWeatherData() {
           />
         </ChartCanvasWrapper>
         <ChartCanvasWrapper>
-          <Bar
-            height="400px"
-            width="600px"
-            options={getLineChartOptions('Conditions [%]')}
-            data={dataPerYear(conditions2018)}
-            style={chartStyle()}
-          />
-        </ChartCanvasWrapper>
-        <ChartCanvasWrapper>
-          <Bar
-            height="400px"
-            width="600px"
-            options={getLineChartOptions('Conditions [%]')}
-            data={dataPerYear(conditions2019)}
-            style={chartStyle()}
-          />
-        </ChartCanvasWrapper>
-      </ChartWrapper>
-      <ChartWrapper>
-        <ChartCanvasWrapper>
-          <Bar
-            height="400px"
-            width="600px"
-            options={getLineChartOptions('Conditions [%]')}
-            data={dataPerYear(conditions2020)}
-            style={chartStyle()}
-          />
-        </ChartCanvasWrapper>
-        <ChartCanvasWrapper>
-          <Bar
-            height="400px"
-            width="600px"
-            options={getLineChartOptions('Conditions [%]')}
-            data={dataPerYear(conditions2021)}
-            style={chartStyle()}
-          />
-        </ChartCanvasWrapper>
-        <ChartCanvasWrapper>
           <Line
             height="400px"
             width="600px"
-            options={getLineChartOptions('Temperature per month (years)  [F - fahrenheit]')}
+            options={getLineChartOptions('Temperature per year [F - fahrenheit]')}
             data={dataPerMonthsData(
               monthsTemp2018,
               monthsTemp2019,
@@ -139,7 +104,46 @@ export function DisplayWeatherData() {
             style={chartStyle()}
           />
         </ChartCanvasWrapper>
+        <ChartCanvasWrapper>
+          <Bar
+            height="400px"
+            width="600px"
+            options={getLineChartOptions('Conditions [%] - Year 2018')}
+            data={dataPerYear(conditions2018)}
+            style={chartStyle()}
+          />
+        </ChartCanvasWrapper>
       </ChartWrapper>
+      <ChartWrapper>
+        <ChartCanvasWrapper>
+          <Bar
+            height="400px"
+            width="600px"
+            options={getLineChartOptions('Conditions [%] - Year 2019')}
+            data={dataPerYear(conditions2019)}
+            style={chartStyle()}
+          />
+        </ChartCanvasWrapper>
+        <ChartCanvasWrapper>
+          <Bar
+            height="400px"
+            width="600px"
+            options={getLineChartOptions('Conditions [%] - Year 2020')}
+            data={dataPerYear(conditions2020)}
+            style={chartStyle()}
+          />
+        </ChartCanvasWrapper>
+        <ChartCanvasWrapper>
+          <Bar
+            height="400px"
+            width="600px"
+            options={getLineChartOptions('Conditions [%] - Year 2021')}
+            data={dataPerYear(conditions2021)}
+            style={chartStyle()}
+          />
+        </ChartCanvasWrapper>
+      </ChartWrapper>
+      <DisplayOtherWeatherData />
     </>
   );
 }

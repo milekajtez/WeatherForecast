@@ -151,6 +151,64 @@ export const dataPerMonthsData = (
   };
 };
 
+export const otherWeatherDataPerMonthsData = (
+  windSpeed,
+  cloudCover,
+  snow,
+  windSpeedText,
+  cloudCoverText,
+  snowText
+) => {
+  return {
+    labels: months,
+    datasets: [
+      {
+        label: windSpeedText,
+        data: windSpeed,
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        yAxisID: 'y'
+      },
+      {
+        label: cloudCoverText,
+        data: cloudCover,
+        borderColor: 'rgb(255, 189, 0)',
+        backgroundColor: 'rgb(207, 189, 146)',
+        yAxisID: 'y'
+      },
+      {
+        label: snowText,
+        data: snow,
+        borderColor: 'rgb(0, 102, 102)',
+        backgroundColor: 'rgb(0, 255, 255)',
+        yAxisID: 'y'
+      }
+    ]
+  };
+};
+
+export const loadAndTempPerMonthsData = (loads, temperatures, loadText, temperatureText, dates) => {
+  return {
+    labels: dates,
+    datasets: [
+      {
+        label: loadText,
+        data: loads,
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        yAxisID: 'y'
+      },
+      {
+        label: temperatureText,
+        data: temperatures,
+        borderColor: 'rgb(0, 102, 102)',
+        backgroundColor: 'rgb(0, 255, 255)',
+        yAxisID: 'y'
+      }
+    ]
+  };
+};
+
 export const ChartWrapper = styled.div`
   display: inline-flex;
   background: 'linear-gradient(to right, #25c481, #25b7c4)';

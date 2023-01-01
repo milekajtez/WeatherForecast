@@ -55,6 +55,8 @@ def process_weather_data(paths_weather):
         df = pandas.read_csv(path, engine='python', sep=',', header=0, usecols=weather_columns)
         df.sort_index(inplace=True)
         df = df.interpolate(method='pad')
+        df['datetime'] = pandas.to_datetime(df["datetime"], format='%Y-%m-%dT%H:%M:%S')
+        df['datetime'] = df['datetime'].dt.strftime('%m/%d/%Y %H:%M:%S')
         df['temp'] = np.where(df['temp'] > 140, np.nan, df['temp'])
         df = df.interpolate(method='linear')
         weather_data.append(df)

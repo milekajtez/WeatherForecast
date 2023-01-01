@@ -1,4 +1,6 @@
-from data_access.data_access_db import load_collection
+from datetime import datetime
+
+from data_access.data_access_db import load_collection, weather_collection
 from models.Temperature import Temperature
 
 
@@ -32,3 +34,36 @@ def get_loads_per_month_service():
                 y[year].append(months[year][i] / cnt[year][i])
 
     return Temperature(y[2018], y[2019], y[2020], y[2021])
+
+
+def get_loads_and_temperature_service(start, end):
+    load_data = load_collection.find_one({"index": "load"})
+    weather_data = weather_collection.find_one({"index": "weather"})
+
+    data = {
+        'loads': [],
+        'temperatures': []
+    }
+
+    current_start = datetime.strptime(start, '%Y-%m-%d').date()
+    current_end = datetime.strptime(end, '%Y-%m-%d').date()
+
+    for item in weather_data['data']:
+        current_date = datetime.strptime(item['datetime'], '%m/%d/%Y %H:%M:%S').date()
+        if current_start <= current_date <= current_end:
+            obj = {
+                'date': item['datetime'],
+                'value': item['temp'],
+            }
+            data['temperatures'].append(obj)
+
+    for item in load_data['data']:
+        current_date = datetime.strptime(item['Time Stamp'], '%m/%d/%Y %H:%M:%S').date()
+        if current_start <= current_date <= current_end:
+            obj = {
+                'date': item['Time Stamp'],
+                'value': item['Load']
+            }
+            data['loads'].append(obj)
+
+    return data

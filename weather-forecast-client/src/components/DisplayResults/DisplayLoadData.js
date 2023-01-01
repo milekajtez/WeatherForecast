@@ -19,6 +19,7 @@ import {
   getLineChartOptions,
   dataPerMonthsData
 } from '../../Helpers/ChartHelper';
+import { DisplayLoadPlusTemperatureData } from './DisplayLoadPlusTemperatureData';
 
 ChartJS.register(
   CategoryScale,
@@ -44,7 +45,7 @@ export function DisplayLoadData() {
       setLoadsTemp2020(response.data.y2020);
       setLoadsTemp2021(response.data.y2021);
     });
-  });
+  }, []);
   return (
     <>
       <ChartWrapper>
@@ -63,54 +64,8 @@ export function DisplayLoadData() {
             style={chartStyle()}
           />
         </ChartCanvasWrapper>
-        <ChartCanvasWrapper>
-          <Line
-            height="400px"
-            width="600px"
-            options={getLineChartOptions('Load per month (years)')}
-            data={dataPerMonthsData(
-              loadsTemp2018,
-              loadsTemp2019,
-              loadsTemp2020,
-              loadsTemp2021,
-              'Load'
-            )}
-            style={chartStyle()}
-          />
-        </ChartCanvasWrapper>
-        <ChartCanvasWrapper>
-          <Line
-            height="400px"
-            width="600px"
-            options={getLineChartOptions('Load per month (years)')}
-            data={dataPerMonthsData(
-              loadsTemp2018,
-              loadsTemp2019,
-              loadsTemp2020,
-              loadsTemp2021,
-              'Load'
-            )}
-            style={chartStyle()}
-          />
-        </ChartCanvasWrapper>
       </ChartWrapper>
-      <ChartWrapper>
-        <ChartCanvasWrapper>
-          <Line
-            height="400px"
-            width="600px"
-            options={getLineChartOptions('Load per month (years)')}
-            data={dataPerMonthsData(
-              loadsTemp2018,
-              loadsTemp2019,
-              loadsTemp2020,
-              loadsTemp2021,
-              'Load'
-            )}
-            style={chartStyle()}
-          />
-        </ChartCanvasWrapper>
-      </ChartWrapper>
+      <DisplayLoadPlusTemperatureData />
     </>
   );
 }

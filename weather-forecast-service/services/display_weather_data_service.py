@@ -1,3 +1,5 @@
+import datetime
+
 from data_access.data_access_db import weather_collection
 from models.Temperature import Temperature
 
@@ -21,7 +23,7 @@ def average_temperatures_per_year_service():
 
     # Iterate over the weather data and sum the temperatures and counts for each year
     for item in weather_data['data']:
-        year = item['datetime'][:4]
+        year = item['datetime'][6:10]
         if year in averages:
             averages[year] += float(item['temp'])
             counts[year] += 1
@@ -77,8 +79,8 @@ def get_temperature_per_month_service():
 
     # Iterate over the weather data and sum the temperatures and counts for each month of each year
     for item in weather_data['data']:
-        year = item['datetime'][:4]
-        month = int(item['datetime'][5:7]) - 1
+        year = item['datetime'][6:10]
+        month = int(item['datetime'][:2]) - 1
         if year in months:
             months[year][month] += float(item['temp'])
             counts[year][month] += 1
@@ -89,3 +91,37 @@ def get_temperature_per_month_service():
     }
 
     return Temperature(*avg_temps.values())
+
+
+def get_other_weather_data_service(year):
+    weather_data = weather_collection.find_one({"index": "weather"})
+
+    counts = {
+        'windSpeed': [0] * 12,
+        'cloudCover': [0] * 12,
+        'snow': [0] * 12
+    }
+
+    # Iterate over the weather data and sum the temperatures and counts for each month of each year
+    earliest_date = datetime.datetime(1, 1, 1, 0, 0)
+    current_date = earliest_date.strftime("%m/%d/%Y")
+    for item in weather_data['data']:
+        current_year = item['datetime'][6:10]
+        if current_year != year:
+            continue
+
+        if current_date == item['datetime'][0:10]:
+            continue
+
+        month = int(item['datetime'][:2]) - 1
+        if item['windspeed'] != 0:
+            counts['windSpeed'][month] += 1
+            current_date = item['datetime'][0:10]
+        if item['cloudcover'] != 0:
+            counts['cloudCover'][month] += 1
+            current_date = item['datetime'][0:10]
+        if item['snow'] != 0:
+            counts['snow'][month] += 1
+            current_date = item['datetime'][0:10]
+
+    return counts

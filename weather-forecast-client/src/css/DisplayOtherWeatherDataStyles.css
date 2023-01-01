@@ -1,0 +1,36 @@
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  margin-bottom: 10px;
+  background-color: DodgerBlue;
+  height: 30px;
+  font-size: medium;
+  font-weight: bold;
+  text-align: center;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+}
+
+.datepicker-wrapper {
+  flex: 1;
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+
+.datePicker {
+  outline: none;
+  width: 140px;
+  padding: 15px;
+  margin-right: 5px;
+  font-size: 20px;
+  color: #ccc;
+  background-color: #000000;
+  border: 1px solid #66acc8;
+  border-radius: 10px;
+  flex: 1;
+  display: flex !important;
+}
