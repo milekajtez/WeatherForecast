@@ -69,8 +69,9 @@ def process_load_data(paths_load):
     for path in paths_load:
         df = pandas.read_csv(path, engine='python', sep=',', header=0, usecols=load_columns)
         df.sort_index(inplace=True)
+        df = df[(df['Name'] == 'N.Y.C.') & (df['Time Stamp'].str.contains(':00:00'))]
         df = df.interpolate(method='linear')
-        load_current.append(df[(df['Name'] == 'N.Y.C.') & (df['Time Stamp'].str.contains(':00:00'))])
+        load_current.append(df)
 
     return pandas.concat(load_current)
 
@@ -110,4 +111,3 @@ def make_weight_column(dates_columns):
 
     weight_column = [get_weight(date) for date in dates_columns]
     return weight_column
-

@@ -83,9 +83,7 @@ export function DisplayOtherWeatherData() {
         style={{ width: '200px' }}
         defaultValue={'Please select option'}
         onChange={(e) => getOtherWeatherDataPerYear(e.target.value)}>
-        <option value={''} selected>
-          Cancel current graphic
-        </option>
+        <option value={''}>Cancel current graphic</option>
         {years.map((item, index) => {
           return (
             <option key={index} value={item}>

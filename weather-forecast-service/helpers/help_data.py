@@ -4,6 +4,12 @@ processing_data_success_message = "Import data from csv successfully. See 'Displ
 weather_columns = ['datetime', 'temp', 'feelslike', 'snow', 'windspeed', 'cloudcover', 'conditions']
 load_columns = ['Time Stamp', 'Name', 'Load']
 
+weather_columns_training = ['temp', 'feelslike', 'snow', 'windspeed', 'cloudcover', 'conditions']
+load_columns_training = ['Load']
+
+training_success_message = 'Training successfully completed'
+training_no_data_message = "For current date range we don't have any data for training"
+
 weekend_sunday_weight = 0.75
 weekend_saturday_weight = 0.5
 finally_friday_weight = 0.25
@@ -13,6 +19,7 @@ weather_conditions = [
     'Clear',
     'Partially cloudy',
     'Overcast',
+    'Rain',
     'Rain, Partially cloudy',
     'Rain, Overcast',
     'Snow, Partially cloudy',
