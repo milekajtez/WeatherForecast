@@ -25,7 +25,7 @@ export function ImportData() {
   return (
     <div className="importData">
       <DisplayCSVFiles />
-      <Loader loader={loader} />
+      <Loader loader={loader} text="IMPORTING DATA FROM CSV..." />
       <button
         disabled={disableImportData}
         className="import-button linear-aqua"

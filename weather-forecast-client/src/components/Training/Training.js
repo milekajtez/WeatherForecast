@@ -45,7 +45,7 @@ export function Training() {
 
   return (
     <div className="container">
-      <Loader loader={loader} />
+      <Loader loader={loader} text="TRAINING MODEL..." />
       <h2 className="welcome-title">Here you can make and training your model for prediction</h2>
       <div className="welcome-text">
         First you have to fill in the time range for which the data for turning will be taken. Then

@@ -2,6 +2,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from helpers.ann_base import AnnBase
 
+MODEL_NAME = "trained_model_10"
 
 class AnnRegression(AnnBase):
     def __init__(self):
@@ -31,7 +32,7 @@ class AnnRegression(AnnBase):
         self.model.compile(loss=self.cost_function, optimizer=self.optimizer)
         self.trainX = trainX
         self.model.fit(trainX, trainY, epochs=self.epoch_number, batch_size=self.batch_size_number, verbose=self.verbose)
-        # self.model.save(MODEL_NAME)
+        self.model.save(MODEL_NAME)
         # ucitamo model iz tog fdajla i radimo predvidjanje
 
     def use_current_model(self, path, trainX):
