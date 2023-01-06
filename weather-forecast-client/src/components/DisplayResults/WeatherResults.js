@@ -4,8 +4,6 @@ import '../../css/ImportData.css';
 export function WeatherResults(props) {
   const { weatherData } = props;
 
-  // Display all values for weather
-
   return (
     <>
       <section style={{ marginTop: '100px' }}>

@@ -3,7 +3,6 @@ import API from '../../api';
 import {
   Chart as ChartJS,
   CategoryScale,
-  LinearScale,
   PointElement,
   LineElement,
   Title,

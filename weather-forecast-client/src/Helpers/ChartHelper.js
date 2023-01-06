@@ -5,11 +5,14 @@ export const conditions = [
   'Clear',
   'Partially cloudy',
   'Overcast',
+  'Rain',
   'Rain, Partially cloudy',
   'Rain, Overcast',
   'Snow, Partially cloudy',
-  'Snow, Overcast'
+  'Snow, Overcast',
+  'Snow'
 ];
+
 export const months = [
   'January',
   'February',
@@ -92,7 +95,9 @@ export const dataPerYear = (dataYear) => {
           'rgb(0, 153, 0, 0.5)',
           'rgb(255, 189, 0, 0.5)',
           'rgba(153, 102, 255, 0.5)',
-          'rgba(201, 203, 207, 0.5)'
+          'rgba(201, 203, 207, 0.5)',
+          'rgba(0, 0, 0, 0.5)',
+          'rgba(110, 197, 232, 0.5)'
         ],
         borderColor: [
           'rgb(255, 99, 132)',
@@ -101,7 +106,9 @@ export const dataPerYear = (dataYear) => {
           'rgb(0, 153, 0)',
           'rgb(255, 189, 0)',
           'rgba(153, 102, 255)',
-          'rgba(201, 203, 207)'
+          'rgba(201, 203, 207)',
+          'rgba(0, 0, 0, 1)',
+          'rgba(110, 197, 232, 1)'
         ],
         borderWidth: 2
       }
