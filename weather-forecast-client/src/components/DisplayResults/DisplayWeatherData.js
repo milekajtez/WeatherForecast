@@ -4,6 +4,7 @@ import {
   Chart as ChartJS,
   CategoryScale,
   PointElement,
+  LinearScale,
   LineElement,
   Title,
   Tooltip,
@@ -26,8 +27,8 @@ import '../../css/HomeStyles.css';
 
 ChartJS.register(
   CategoryScale,
-  LinearScale,
   PointElement,
+  LinearScale,
   LineElement,
   BarElement,
   Title,

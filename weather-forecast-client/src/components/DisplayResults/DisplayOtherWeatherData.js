@@ -3,6 +3,7 @@ import {
   Chart as ChartJS,
   CategoryScale,
   PointElement,
+  LinearScale,
   LineElement,
   Title,
   Tooltip,
@@ -24,8 +25,8 @@ import '../../css/DisplayOtherWeatherDataStyles.css';
 
 ChartJS.register(
   CategoryScale,
-  LinearScale,
   PointElement,
+  LinearScale,
   LineElement,
   BarElement,
   Title,

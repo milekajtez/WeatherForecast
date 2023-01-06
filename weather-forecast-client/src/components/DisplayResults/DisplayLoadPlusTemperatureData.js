@@ -4,6 +4,7 @@ import {
   Chart as ChartJS,
   CategoryScale,
   PointElement,
+  LinearScale,
   LineElement,
   Title,
   Tooltip,
@@ -21,8 +22,8 @@ import {
 } from '../../Helpers/ChartHelper';
 ChartJS.register(
   CategoryScale,
-  LinearScale,
   PointElement,
+  LinearScale,
   LineElement,
   BarElement,
   Title,
