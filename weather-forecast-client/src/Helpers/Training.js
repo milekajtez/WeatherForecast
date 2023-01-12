@@ -7,3 +7,5 @@ export const trainingValidation = (start, end, option) => {
 
   return false;
 };
+
+export const predictValidation = (start, end) => start <= end;

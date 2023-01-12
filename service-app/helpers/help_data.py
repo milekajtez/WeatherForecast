@@ -9,6 +9,7 @@ load_columns_training = ['Load']
 
 training_success_message = 'Training successfully completed'
 training_no_data_message = "For current date range we don't have any data for training"
+prediction_no_data_message = "for current date range we don't have any data for prediction"
 
 weekend_sunday_weight = 0.35
 weekend_saturday_weight = 0.3

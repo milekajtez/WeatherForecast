@@ -5,6 +5,7 @@ import { DisplayWeatherData } from '../DisplayResults/DisplayWeatherData';
 import { DisplayLoadData } from '../DisplayResults/DisplayLoadData';
 import { Training } from '../Training/Training';
 import Home from '../Home/Home';
+import { Prediction } from '../Prediction/Prediction';
 
 export function Routing() {
   return (
@@ -15,6 +16,7 @@ export function Routing() {
         <Route path={'/displayWeatherData'} exact element={<DisplayWeatherData />} />
         <Route path={'/displayLoadData'} exact element={<DisplayLoadData />} />
         <Route path={'/training'} exact element={<Training />} />
+        <Route path={'/prediction'} exact element={<Prediction />} />
       </Routes>
     </div>
   );

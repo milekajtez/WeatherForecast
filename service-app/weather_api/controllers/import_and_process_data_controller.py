@@ -11,11 +11,11 @@ async def load_all_csv_names():
     return load_all_csv_names_service()
 
 
-@router.get("/checkDoesDataExists")
+@router.get("/checkDoesDataExists", tags=['Import data'])
 async def check_does_data_exists():
     return check_does_data_exists_service()
 
 
-@router.post("/processCsvData")
+@router.post("/processCsvData", tags=['Import data'])
 async def process_csv_data():
     return process_csv_data_service()

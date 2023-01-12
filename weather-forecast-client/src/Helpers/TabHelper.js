@@ -3,5 +3,6 @@ export const tabs = [
   { tabName: 'Import data', url: '/importData' },
   { tabName: 'Display weather data', url: '/displayWeatherData' },
   { tabName: 'Display load data', url: '/displayLoadData' },
-  { tabName: 'Training', url: '/training' }
+  { tabName: 'Training', url: '/training' },
+  { tabName: 'Prediction', url: '/prediction' }
 ];

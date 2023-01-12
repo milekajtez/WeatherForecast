@@ -6,6 +6,11 @@ from tensorflow import keras
 MODEL_NAME = "trained_model_19"
 
 
+def get_model_from_path(path):
+    model = keras.models.load_model(path)
+    return model
+
+
 class AnnRegression(AnnBase):
     def __init__(self):
         super().__init__()
@@ -25,10 +30,6 @@ class AnnRegression(AnnBase):
         model.add(Dense(1, kernel_initializer=self.kernel_initializer))
         return model
 
-    def get_model_from_path(self, path):
-        model = keras.models.load_model(path)
-        return model
-
     def compile_and_fit(self, train_x, train_y):
         self.model = self.get_model()
         self.model.compile(loss=self.cost_function, optimizer=self.optimizer)
@@ -37,9 +38,11 @@ class AnnRegression(AnnBase):
             train_x, train_y, epochs=self.epoch_number, batch_size=self.batch_size_number, verbose=self.verbose)
         self.model.save(MODEL_NAME)
 
-    def use_current_model(self, path, train_x):
+    '''def use_current_model(self, path, train_x):
         self.train_x = train_x
         self.model = self.get_model_from_path(path)
+        print(self.train_x)
+        print(self.model)'''
 
     def get_predict(self, test_x):
         train_predict = self.model.predict(self.train_x)
@@ -48,5 +51,16 @@ class AnnRegression(AnnBase):
 
     def compile_fit_predict(self, train_x, train_y, test_x):
         self.compile_and_fit(train_x, train_y)
-        self.use_current_model(MODEL_NAME, train_x)
+        # self.use_current_model(MODEL_NAME, train_x)
         return self.get_predict(test_x)
+
+    """def predict_method(self, test_x):
+        #self.use_current_model(MODEL_NAME, test_x)
+        self.train_x = test_x
+        self.model = self.get_model_from_path(MODEL_NAME)
+        test_predict = self.model.predict(test_x)
+        return test_predict"""
+
+    '''def get_predict_prediction(self, test_x):
+        test_predict = self.model.predict(test_x)
+        return test_predict'''
