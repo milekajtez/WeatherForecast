@@ -7,7 +7,7 @@ from helpers.scorer import Scorer
 from helpers.help_data import training_success_message, training_no_data_message, weather_columns_training, \
     load_columns_training
 
-NUMBER_OF_COLUMNS = 5
+NUMBER_OF_COLUMNS = 4
 
 
 def training_model_service(start, end, option):
@@ -25,7 +25,7 @@ def training_model_service(start, end, option):
     df_all_data = pandas.concat([weather_df, load_df], axis=1, ignore_index=True, sort=False)
     df_all_data = df_all_data.interpolate(method='linear')
     date_frame_for_training = df_all_data.rename(
-        columns={0: 'Temp', 1: 'Feelslike', 2: 'Season', 3: 'Weight', 4: 'Load'}
+        columns={0: 'windspeed', 1: 'winddir', 2: 'conditions', 3: 'Load'}
     )
 
     preparer = CustomPreparer(date_frame_for_training, NUMBER_OF_COLUMNS, float(option) / 100)

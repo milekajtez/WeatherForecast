@@ -2,8 +2,9 @@ from keras.models import Sequential
 from keras.layers import Dense
 from helpers.ann_base import AnnBase
 from tensorflow import keras
+from datetime import datetime
 
-MODEL_NAME = "trained_model_19"
+MODEL_NAME = "trained_model_" + str(datetime.now().strftime("%m-%d-%Y_%H-%M-%S"))
 
 
 def get_model_from_path(path):
@@ -20,7 +21,7 @@ class AnnRegression(AnnBase):
     def get_model(self):
         model = Sequential()
         if self.number_of_hidden_layers > 0:
-            model.add(Dense(self._number_of_neurons_in_first_hidden_layer, input_shape=(1, 4),
+            model.add(Dense(self._number_of_neurons_in_first_hidden_layer, input_shape=(1, 3),
                             kernel_initializer=self.kernel_initializer, activation=self.activation_function))
             if self.number_of_hidden_layers > 1:
                 for i in range(self.number_of_hidden_layers - 1):
@@ -38,12 +39,6 @@ class AnnRegression(AnnBase):
             train_x, train_y, epochs=self.epoch_number, batch_size=self.batch_size_number, verbose=self.verbose)
         self.model.save(MODEL_NAME)
 
-    '''def use_current_model(self, path, train_x):
-        self.train_x = train_x
-        self.model = self.get_model_from_path(path)
-        print(self.train_x)
-        print(self.model)'''
-
     def get_predict(self, test_x):
         train_predict = self.model.predict(self.train_x)
         test_predict = self.model.predict(test_x)
@@ -53,14 +48,3 @@ class AnnRegression(AnnBase):
         self.compile_and_fit(train_x, train_y)
         # self.use_current_model(MODEL_NAME, train_x)
         return self.get_predict(test_x)
-
-    """def predict_method(self, test_x):
-        #self.use_current_model(MODEL_NAME, test_x)
-        self.train_x = test_x
-        self.model = self.get_model_from_path(MODEL_NAME)
-        test_predict = self.model.predict(test_x)
-        return test_predict"""
-
-    '''def get_predict_prediction(self, test_x):
-        test_predict = self.model.predict(test_x)
-        return test_predict'''

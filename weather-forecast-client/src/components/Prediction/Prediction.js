@@ -52,12 +52,10 @@ export function Prediction() {
       return;
     }
 
-    setLoader(true);
     var start = startDate.toISOString().split('T')[0];
     var end = endDate.toISOString().split('T')[0];
 
     API.get(`/prediction/predict?start=${start}&end=${end}`).then((response) => {
-      setLoader(false);
       alert(response.data);
       setPredictResults(response.data);
     });

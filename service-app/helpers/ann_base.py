@@ -1,12 +1,12 @@
-EPOCH_NUMBER = 200
-BATCH_SIZE_NUMBER = 2
+EPOCH_NUMBER = 50
+BATCH_SIZE_NUMBER = 1
 COST_FUNCTION = 'mean_squared_error'
 OPTIMIZER = 'adam'
 KERNEL_INITIALIZER = 'normal'
 ACTIVATION_FUNCTION = 'sigmoid'
-NUMBER_OF_HIDDEN_LAYERS = 0
-NUMBER_OF_NEURONS_IN_FIRST_HIDDEN_LAYER = 6
-NUMBER_OF_NEURONS_IN_OTHER_HIDDEN_LAYERS = 4
+NUMBER_OF_HIDDEN_LAYERS = 2
+NUMBER_OF_NEURONS_IN_FIRST_HIDDEN_LAYER = 4
+NUMBER_OF_NEURONS_IN_OTHER_HIDDEN_LAYERS = 2
 VERBOSE = 2
 
 
@@ -19,8 +19,8 @@ class AnnBase:
         self.kernel_initializer = KERNEL_INITIALIZER
         self.activation_function = ACTIVATION_FUNCTION
         self.number_of_hidden_layers = NUMBER_OF_HIDDEN_LAYERS
-        self.number_of_neurons_in_first_hidden_layer = 20
-        self.number_of_neurons_in_other_hidden_layers = 8
+        self.number_of_neurons_in_first_hidden_layer = NUMBER_OF_NEURONS_IN_FIRST_HIDDEN_LAYER
+        self.number_of_neurons_in_other_hidden_layers = NUMBER_OF_NEURONS_IN_OTHER_HIDDEN_LAYERS
         self.verbose = VERBOSE
 
     @property

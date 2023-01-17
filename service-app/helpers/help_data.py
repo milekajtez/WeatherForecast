@@ -1,25 +1,27 @@
 from models.holiday import Holiday
 
 processing_data_success_message = "Import data from csv successfully. See 'Display data' page to see all imported data"
-weather_columns = ['datetime', 'temp', 'feelslike', 'snow', 'windspeed', 'cloudcover', 'conditions']
+weather_columns = ['datetime', 'temp', 'feelslike', 'humidity', 'snow', 'windspeed', 'winddir', 'cloudcover',
+                   'conditions']
 load_columns = ['Time Stamp', 'Name', 'Load']
 
-weather_columns_training = ['temp', 'feelslike', 'weight', 'season']
+weather_columns_training = ['temp', 'winddir', 'conditions']
 load_columns_training = ['Load']
 
 training_success_message = 'Training successfully completed'
 training_no_data_message = "For current date range we don't have any data for training"
 prediction_no_data_message = "for current date range we don't have any data for prediction"
+prediction_uploaded_success = 'Uploading file for prediction successfully'
 
-weekend_sunday_weight = 0.35
-weekend_saturday_weight = 0.3
-finally_friday_weight = 0.15
+weekend_sunday_weight = 3
+weekend_saturday_weight = 1.5
+finally_friday_weight = 1
 job_days_weight = 0
 
-winter = 0.15
-spring = 0.05
-summer = 0.35
-autumn = 0.05
+winter = 1.5
+spring = 1
+summer = 3
+autumn = 1
 
 weather_conditions = [
     'Clear',

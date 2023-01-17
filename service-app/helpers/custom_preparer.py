@@ -32,33 +32,6 @@ class CustomPreparer:
         self.test_y = test_y
         return train_x.copy(), train_y.copy(), test_x.copy(), test_y.copy()
 
-    """def prepare_for_prediction(self):
-        dataset = self.scaler.fit_transform(self.datasetOrig)
-        train_size = int(len(dataset) * self.share_for_training)
-        test_size = len(dataset) - train_size + 1
-        test = dataset[test_size:len(dataset), :]
-        look_back = self.number_of_columns
-        test_x = self.create_dataset_for_prediction(test, look_back)
-        test_x = numpy.reshape(test_x, (test_x.shape[0], 1, test_x.shape[1]))
-
-        self.test_x = test_x
-
-        train_size = int(len(dataset) * self.share_for_training)
-        test_size = len(dataset) - train_size
-        train, test = dataset[0:train_size, :], dataset[test_size:len(dataset), :]
-        print(len(train), len(test))
-        look_back = self.number_of_columns
-        train_x, train_y = self.create_dataset(train, look_back)
-        test_x, test_y = self.create_dataset(test, look_back)
-        train_x = numpy.reshape(train_x, (train_x.shape[0], 1, train_x.shape[1]))
-        test_x = numpy.reshape(test_x, (test_x.shape[0], 1, test_x.shape[1]))
-        self.train_x = train_x
-        self.train_y = train_y
-        self.test_x = test_x
-        self.test_y = test_y
-        return train_x.copy(), train_y.copy(), test_x.copy(), test_y.copy()
-        return test_x.copy()"""
-
     def inverse_transform(self, train_predict, test_predict):
         train_predict = numpy.reshape(train_predict, (train_predict.shape[0], train_predict.shape[1]))
         test_predict = numpy.reshape(test_predict, (test_predict.shape[0], test_predict.shape[1]))
@@ -88,11 +61,3 @@ class CustomPreparer:
             data_x.append(a)
             data_y.append(dataset[i, look_back-1])
         return numpy.array(data_x), numpy.array(data_y)
-
-    """@staticmethod
-    def create_dataset_for_prediction(dataset, look_back):
-        data_x = []
-        for i in range(len(dataset) - 1):
-            a = dataset[i, 0:look_back - 1]
-            data_x.append(a)
-        return numpy.array(data_x)"""
