@@ -14,7 +14,8 @@ export function Prediction() {
   const [endDate, setEndDate] = useState(new Date());
   const [fileForPrediction, setFileForPrediction] = useState(null);
   const [dateForm, setDateForm] = useState(false);
-  const [predictResults, setPredictResults] = useState('');
+  const [predictResults, setPredictResults] = useState([]);
+  const [predictDatetimes, setPredictDatetimes] = useState([]);
 
   const setStartDateHandler = (date) => {
     setStartDate(date);
@@ -56,8 +57,10 @@ export function Prediction() {
     var end = endDate.toISOString().split('T')[0];
 
     API.get(`/prediction/predict?start=${start}&end=${end}`).then((response) => {
-      alert(response.data);
-      setPredictResults(response.data);
+      alert('Prediction successfully');
+      setPredictResults(response.data.loads);
+      setPredictDatetimes(response.data.datetimes);
+      console.log(response.data);
     });
   };
 
@@ -109,7 +112,9 @@ export function Prediction() {
         </>
       ) : null}
 
-      {predictResults.length > 0 ? <PredictionResult predictResults={predictResults} /> : null}
+      {predictResults.length > 0 && predictDatetimes.length > 0 ? (
+        <PredictionResult predictResults={predictResults} predictDatetimes={predictDatetimes} />
+      ) : null}
     </div>
   );
 }

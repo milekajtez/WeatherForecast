@@ -5,8 +5,10 @@ weather_columns = ['datetime', 'temp', 'feelslike', 'humidity', 'snow', 'windspe
                    'conditions']
 load_columns = ['Time Stamp', 'Name', 'Load']
 
+weather_only_datetime = ['datetime']
 weather_columns_training = ['temp', 'winddir', 'conditions']
 load_columns_training = ['Load']
+load_for_prediction = ['snow']
 
 training_success_message = 'Training successfully completed'
 training_no_data_message = "For current date range we don't have any data for training"

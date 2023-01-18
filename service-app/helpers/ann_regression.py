@@ -7,11 +7,6 @@ from datetime import datetime
 MODEL_NAME = "trained_model_" + str(datetime.now().strftime("%m-%d-%Y_%H-%M-%S"))
 
 
-def get_model_from_path(path):
-    model = keras.models.load_model(path)
-    return model
-
-
 class AnnRegression(AnnBase):
     def __init__(self):
         super().__init__()
